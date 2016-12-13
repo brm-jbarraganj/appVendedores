@@ -14,34 +14,34 @@
       <div id="menu-container2">
         <div id="menu-markdown21" style="text-align:center;" class="show-list-numbers-and-dots">
           <p class="menu-puntos azul-claro">
-            50p
+            {{puntosUsuario}}p
           </p>
         </div>
         <div id="menu-markdown21" style="text-align:center;" class="show-list-numbers-and-dots">
           <p class="menu-nombre">
-            <strong>Pepito Perez</strong>
+            <strong>{{nombreUsuario}}</strong>
           </p>
         </div>
         <div id="menu-markdown23" style="text-align:center;" class="show-list-numbers-and-dots">
-          <p class="menu-cargo azul-claro">Director</p>
+          <p class="menu-cargo azul-claro">{{cargoUsuario}}</p>
         </div>
       </div>
       <div class="spacer" style="height: 60px;"></div>
       <ion-list id="menu-list1">
         <div>
-          <ion-item id="menu-list-item1" ui-sref="menu.subcategoria" menu-close="">
+          <ion-item id="menu-list-item1" ng-click="selMenuCategoria(categoria1)" menu-close="">
           <i class="icon-ventas"></i>
-          <span>Ventas</span>
+          <span>{{categoria1.nombre}}</span>
           </ion-item>
         </div>
         <div>
-          <ion-item id="menu-list-item2" ui-sref="menu.subcategoria" menu-close="">
+          <ion-item id="menu-list-item2" ng-click="selMenuCategoria(categoria2)" menu-close="">
             <i class="icon-marketing"></i>
-            <span> Marketing </span>
+            <span> {{categoria2.nombre}} </span>
           </ion-item>
         </div>
         <div>
-          <ion-item id="menu-list-item3" ui-sref="login" menu-close="">
+          <ion-item id="menu-list-item3" ng-click="loguot(categoria2)" menu-close="">
             <i class="icon-salir"></i>
             <span>Salir</span>
           </ion-item>

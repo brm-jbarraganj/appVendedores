@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives','app.services',])
+angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives','app.services'])
 
 .config(function($ionicConfigProvider, $sceDelegateProvider){
   
@@ -16,6 +16,17 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
+
+    var notificationOpenedCallback = function(jsonData) {
+      console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+    };
+    if (window.plugins && window.plugins.OneSignal) {
+      window.plugins.OneSignal
+        .startInit("70f89bba-c190-4195-ba99-44ac183508a7")
+        .handleNotificationOpened(notificationOpenedCallback)
+        .endInit();
+    }
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {

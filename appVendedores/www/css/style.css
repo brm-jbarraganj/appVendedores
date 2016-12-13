@@ -10,7 +10,7 @@
 }
 
 .bg-list-noticias{
-    background: url('../img/imgs/bg-noticias.jpg') no-repeat;
+    background: url('../img/imgs/bg-noticias.jpg') no-repeat white;
     background-size: contain;
     background-position-y: -100px;
 }
@@ -198,7 +198,7 @@ label.item.item-input input {
     font-size: 25px;
 }
 
-
+/*
 .subcategoria-row{
     background: none;
     width: 100%;
@@ -236,6 +236,35 @@ label.item.item-input input {
     width: 40%;
     border-left: 2px solid #2be9ff;
 }
+*/
+
+.btn-subcategoria-caja-1{
+    width: 40%;
+    border: 2px solid #2be9ff;
+    border-left: none;
+}
+.btn-subcategoria-caja-2{
+    width: 60%;
+    border: 2px solid #2be9ff;
+    border-left: none;
+    border-right: none;
+}
+.btn-subcategoria-caja-3{
+    width: 100%;
+    border-bottom: 2px solid #2be9ff;
+    height: auto !important;
+}
+.btn-subcategoria-caja-4{
+    width: 60%;
+    border: 2px solid #2be9ff;
+    border-left: none;
+    border-top: none;
+}
+.btn-subcategoria-caja-5{
+    width: 40%;
+    border-bottom: 2px solid #2be9ff;
+}
+
 
 .btn-subcat{
     color: white;
@@ -246,8 +275,9 @@ label.item.item-input input {
     text-align: center;
     text-decoration: none;
     float: left;
-    height: 103px;
+    height: 124px;
     background: rgba(20, 28, 49, 0.75);
+    display: table;
 }
 
 .main-icon{
@@ -259,7 +289,7 @@ label.item.item-input input {
 .main-icon-ventas{
     background: url('../img/svg/carrito.svg') no-repeat;
     background-size: contain;
-    top: 20px;
+    top: 50px;
     right: 20px;
 }
 .main-icon-marketing{
@@ -308,4 +338,8 @@ label.item.item-input input {
 .detalle-text img{
     width: 100%;
     padding:10px 0;
+}
+
+.item {
+    color: #f8f8f8;
 }

@@ -10,11 +10,13 @@ class DataObject_VenUsuario extends DB_DataObject
 
     public $__table = 'ven_usuario';                     // table name
     public $idUsuario;                       // int(11)  not_null primary_key auto_increment
+    public $idCargo;                         // int(11)  not_null multiple_key
     public $nombre;                          // string(75)  
     public $apellido;                        // string(75)  
     public $email;                           // string(45)  
     public $usuario;                         // string(45)  
     public $contrasena;                      // string(45)  
+    public $puntos;                          // string(45)  
     public $fechaMod;                        // datetime(19)  binary
     public $fecha;                           // datetime(19)  binary
 
@@ -25,11 +27,13 @@ class DataObject_VenUsuario extends DB_DataObject
     {
          return array(
              'idUsuario' =>  DB_DATAOBJECT_INT + DB_DATAOBJECT_NOTNULL,
+             'idCargo' =>  DB_DATAOBJECT_INT + DB_DATAOBJECT_NOTNULL,
              'nombre' =>  DB_DATAOBJECT_STR,
              'apellido' =>  DB_DATAOBJECT_STR,
              'email' =>  DB_DATAOBJECT_STR,
              'usuario' =>  DB_DATAOBJECT_STR,
              'contrasena' =>  DB_DATAOBJECT_STR,
+             'puntos' =>  DB_DATAOBJECT_STR,
              'fechaMod' =>  DB_DATAOBJECT_STR + DB_DATAOBJECT_DATE + DB_DATAOBJECT_TIME,
              'fecha' =>  DB_DATAOBJECT_STR + DB_DATAOBJECT_DATE + DB_DATAOBJECT_TIME,
          );
@@ -42,7 +46,7 @@ class DataObject_VenUsuario extends DB_DataObject
 
     function sequenceKey() // keyname, use native, native name
     {
-         return array('idCategoria', true, false);
+         return array('idCargo', true, false);
     }
 
     function defaults() // column default values 
@@ -53,6 +57,7 @@ class DataObject_VenUsuario extends DB_DataObject
              'email' => '',
              'usuario' => '',
              'contrasena' => '',
+             'puntos' => '',
          );
     }
 

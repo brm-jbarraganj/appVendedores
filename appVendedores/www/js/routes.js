@@ -8,30 +8,20 @@ angular.module('app.routes', [])
   // Each state's controller can be found in controllers.js
   $stateProvider
     
-  
 
-  .state('menu.ventas', {
-    url: '/ventas',
+  .state('menu.listanoticias', {
+    url: '/listanoticias/:categoria/:idCategoria/:idSubcategoria/:nombreSubcategoria/:fechaSubcategoria/',
     views: {
       'side-menu21': {
-        templateUrl: 'templates/ventas.html',
-        controller: 'ventasCtrl'
+        templateUrl: 'templates/listanoticias.html',
+        controller: 'listaNoticiasCtrl'
       }
     }
   })
 
-  .state('menu.marketing', {
-    url: '/marketing',
-    views: {
-      'side-menu21': {
-        templateUrl: 'templates/marketing.html',
-        controller: 'marketingCtrl'
-      }
-    }
-  })
 
   .state('menu.detalle', {
-    url: '/detalle',
+    url: '/detalle/:idNoticia',
     views: {
       'side-menu21': {
         templateUrl: 'templates/detalle.html',
@@ -51,7 +41,7 @@ angular.module('app.routes', [])
   })
 
   .state('menu.subcategoria', {
-    url: '/subcategoria',
+    url: '/subcategoria/:idCategoria/:nombre/',
     views: {
       'side-menu21': {
         templateUrl: 'templates/subcategoria.html',
@@ -72,7 +62,7 @@ angular.module('app.routes', [])
     controller: 'loginCtrl'
   })
 
-$urlRouterProvider.otherwise('/login')
+$urlRouterProvider.otherwise('/menu/main')
 
   
 
