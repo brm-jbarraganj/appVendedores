@@ -169,7 +169,6 @@ function ($scope, $stateParams, $ionicLoading, $state, ServiceGeneral) {
 			nombreSubcategoria: subcat.nombre,
 			fechaSubcategoria: subcat.fechaMod
 		}
-		console.log(subcategoria);
 		$state.go('menu.listanoticias', subcategoria);
 	}
 }])
@@ -211,9 +210,15 @@ function ($scope, $stateParams, $ionicLoading, $state, ServiceGeneral) {
 	.then(function(result){
 		$ionicLoading.hide();
 		if(result.error == 1){
-			$scope.categoria1 = {idCategoria: result.data[0].idCategoria}
-			$scope.categoria2 = {idCategoria: result.data[1].idCategoria}
-		}else{
+			$scope.categoria1 = {
+				idCategoria: result.data[0].idCategoria,
+				nombre: result.data[0].nombre
+			}
+			$scope.categoria2 = {
+				idCategoria: result.data[1].idCategoria,
+				nombre: result.data[1].nombre
+			}
+	}else{
 			console.log("error","Ocurrio un error");
 		}
 	},function(err){

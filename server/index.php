@@ -81,9 +81,9 @@ switch ($request->accion) {
 			$Noticia = new General();
 			$Noticia->idCategoria=$idSubCategoria;
 			$Noticia->idUsuarioAdmin=$idUsuarioAdmin;
-			$Noticia->titulo=$request->titulo;
-			$Noticia->subtitulo=$request->subtitulo;
-			$Noticia->contenido=$request->contenido;
+			$Noticia->titulo=utf8_encode($request->titulo);
+			$Noticia->subtitulo=utf8_encode($request->subtitulo);
+			$Noticia->contenido=utf8_encode($request->contenido);
 			$Noticia->imagen=$request->imagen;
 			$Noticia->tipoTemplate=$request->tipoTemplate;
 			$Noticia->fechaMod = date("Y-m-d H:i:s");
