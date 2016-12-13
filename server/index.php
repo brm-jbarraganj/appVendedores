@@ -1,13 +1,20 @@
 <?php
+ini_set('display_errors', 1);
 header("Access-Control-Allow-Origin: *");
 header('Content-Type: application/json');
 require("db/requires.php");
+include("notificacion.php");
 $General = new General();
 $error=-1;
 $data="";
 
 $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
+if ($request==null) {
+	foreach ($_POST as $key => $value) {
+		$request->$key = $value;
+	}
+}
 
 switch ($request->accion) {
 
@@ -81,6 +88,7 @@ switch ($request->accion) {
 			$Noticia->tipoTemplate=$request->tipoTemplate;
 			$Noticia->fechaMod = date("Y-m-d H:i:s");
 			$idNoticia = $Noticia->setInstancia('VenNoticia');
+			sendMessageAndroid($request->titulo);
 			if ($idNoticia > 0) {
 				$data = $idNoticia;
 				$error = 1;

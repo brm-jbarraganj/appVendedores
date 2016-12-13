@@ -1,7 +1,7 @@
 <?php
-	function sendMessage(){
+	function sendMessageAndroid($mensaje){
 		$content = array(
-			"en" => 'Hola'
+			"en" => $mensaje
 			);
 		
 		$fields = array(
@@ -12,8 +12,8 @@
 		);
 		
 		$fields = json_encode($fields);
-    	print("\nJSON sent:\n");
-    	print($fields);
+    	/*print("\nJSON sent:\n");
+    	print($fields);*/
 		$ch = curl_init();
 		$proxy="172.16.224.4:8080";
 		curl_setopt($ch, CURLOPT_PROXY, $proxy);
@@ -31,10 +31,10 @@
 		return $response;
 	}
 	
-	$response = sendMessage();
+/*	$response = sendMessageAndroid();
 	$return["allresponses"] = $response;
 	$return = json_encode( $return);
 	print("\n\nJSON received:\n");
 	print($return);
-	print("\n");
+	print("\n");*/
 ?>

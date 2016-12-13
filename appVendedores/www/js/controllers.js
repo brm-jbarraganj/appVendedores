@@ -41,36 +41,37 @@ function($scope, $stateParams, $ionicLoading, $ionicPopup, $timeout, $state, Ser
 function ($scope, $stateParams, $ionicLoading, $state, ServiceGeneral) {
 	// Trae Los datos del usuario
 	var userData = JSON.parse( window.localStorage.getItem('us3r4pp'));
-	$scope.nombreUsuario = userData.nombre + " " + userData.apellido;
-	$scope.puntosUsuario = userData.puntos;
-	$scope.cargoUsuario = userData.cargo;
-	// Carga las 2 primeras categorías de la base de datos
-	$ionicLoading.show({
-		template: 'Cargando...'
-	});
-	var parameters = {
-		accion : "getCategorias"
-	};
-	ServiceGeneral.post(parameters)
-	.then(function(result){
-		$ionicLoading.hide();
-		if(result.error == 1){
-			$scope.categoria1 = {
-				idCategoria: result.data[0].idCategoria,
-				nombre: result.data[0].nombre
+	if (userData != null && userData.idUsuario != "") {
+		$scope.nombreUsuario = userData.nombre + " " + userData.apellido;
+		$scope.puntosUsuario = userData.puntos;
+		$scope.cargoUsuario = userData.cargo;
+		// Carga las 2 primeras categorías de la base de datos
+		$ionicLoading.show({
+			template: 'Cargando...'
+		});
+		var parameters = {
+			accion : "getCategorias"
+		};
+		ServiceGeneral.post(parameters)
+		.then(function(result){
+			$ionicLoading.hide();
+			if(result.error == 1){
+				$scope.categoria1 = {
+					idCategoria: result.data[0].idCategoria,
+					nombre: result.data[0].nombre
+				}
+				$scope.categoria2 = {
+					idCategoria: result.data[1].idCategoria,
+					nombre: result.data[1].nombre
+				}
+				$scope.categorias = result.data;
+			}else{
+				console.log("error","Ocurrio un error");
 			}
-			$scope.categoria2 = {
-				idCategoria: result.data[1].idCategoria,
-				nombre: result.data[1].nombre
-			}
-			$scope.categorias = result.data;
-		}else{
-			console.log("error","Ocurrio un error");
-		}
-	},function(err){
-		$ionicLoading.hide();
-	});
-
+		},function(err){
+			$ionicLoading.hide();
+		});
+	}
 	// Selecciona la categoria y redirige a las subcategorias
 	$scope.selMenuCategoria = function(categoria){
 		$state.go('menu.subcategoria',categoria);
@@ -89,34 +90,34 @@ function ($scope, $stateParams, $ionicLoading, $state, ServiceGeneral) {
 	var userData = JSON.parse( window.localStorage.getItem('us3r4pp'));
 	if (userData == null || userData.idUsuario == "") {
 		$state.go('login');
-	};
-	
-	// Carga las 2 primeras categorías de la base de datos
-	$ionicLoading.show({
-		template: 'Cargando...'
-	});
-	var parameters = {
-		accion : "getCategorias"
-	};
-	ServiceGeneral.post(parameters)
-	.then(function(result){
-		$ionicLoading.hide();
-		if(result.error == 1){
-			$scope.categoria1 = {
-				idCategoria: result.data[0].idCategoria,
-				nombre: result.data[0].nombre
+	}else{
+		// Carga las 2 primeras categorías de la base de datos
+		$ionicLoading.show({
+			template: 'Cargando...'
+		});
+		var parameters = {
+			accion : "getCategorias"
+		};
+		ServiceGeneral.post(parameters)
+		.then(function(result){
+			$ionicLoading.hide();
+			if(result.error == 1){
+				$scope.categoria1 = {
+					idCategoria: result.data[0].idCategoria,
+					nombre: result.data[0].nombre
+				}
+				$scope.categoria2 = {
+					idCategoria: result.data[1].idCategoria,
+					nombre: result.data[1].nombre
+				}
+				$scope.categorias = result.data;
+			}else{
+				console.log("error","Ocurrio un error");
 			}
-			$scope.categoria2 = {
-				idCategoria: result.data[1].idCategoria,
-				nombre: result.data[1].nombre
-			}
-			$scope.categorias = result.data;
-		}else{
-			console.log("error","Ocurrio un error");
-		}
-	},function(err){
-		$ionicLoading.hide();
-	});
+		},function(err){
+			$ionicLoading.hide();
+		});
+	}
 
 	// Selecciona la categoria y redirige a las subcategorias
 	$scope.selCategoria = function(categoria){
