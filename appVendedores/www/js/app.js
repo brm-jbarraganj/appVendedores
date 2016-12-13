@@ -21,7 +21,6 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
       console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
     };
     if (window.plugins && window.plugins.OneSignal) {
-      alert("123");
       window.plugins.OneSignal
         .startInit("70f89bba-c190-4195-ba99-44ac183508a7")
         .handleNotificationOpened(notificationOpenedCallback)
